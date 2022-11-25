@@ -47,8 +47,16 @@ export default function Home() {
     }
     if (!query) {
       if (sort) {
+        if (filter) {
+          fetchProducts(`${FETCH_URL}?sort=${sort}&category=${filter}`);
+          return;
+        }
         fetchProducts(`${FETCH_URL}?sort=${sort}`);
       } else if (filter) {
+        if (sort) {
+          fetchProducts(`${FETCH_URL}?sort=${sort}&category=${filter}`);
+          return;
+        }
         fetchProducts(`${FETCH_URL}?category=${filter}`);
       } else {
         fetchProducts(FETCH_URL);
